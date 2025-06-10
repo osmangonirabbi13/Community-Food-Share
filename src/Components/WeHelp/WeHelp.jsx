@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router";
+import "./help.css";
 const WeHelp = () => {
   return (
     <div>
-      <section className="container mx-auto px-4">
+      <section className="container mx-auto px-4 pb-20">
         <div className="max-w-lg mx-auto py-14">
           <h1 className="text-4xl text-center font-medium pb-5 ">
             {" "}
@@ -19,7 +20,7 @@ const WeHelp = () => {
           <div className="food_donate bg-cover bg-no-repeat bg-center shadow hover:shadow-md rounded-md">
             <div className="text-center h-96 bg-[#ffffffc2] flex justify-center items-center">
               <div className="w-3/4 mx-auto">
-                <h1 className="text-3xl text-primary-700 text-center font-medium ">
+                <h1 className="text-3xl text-secondary text-center font-medium ">
                   Donate Food{" "}
                 </h1>
                 <p className="text-center text-lg ">
@@ -31,10 +32,10 @@ const WeHelp = () => {
             </div>
           </div>
 
-          <div className="grow food_donate bg-cover bg-no-repeat bg-center shadow hover:shadow-md rounded-md">
+          <div className="grow1 food_donate bg-cover bg-no-repeat bg-center shadow hover:shadow-md rounded-md">
             <div className="text-center h-96 bg-[#ffffffc2] flex justify-center items-center">
               <div className="w-3/4 mx-auto">
-                <h1 className="text-3xl text-primary-700 text-center font-medium ">
+                <h1 className="text-3xl text-secondary text-center font-medium ">
                   Grow a Row{" "}
                 </h1>
                 <p className="text-center text-lg  py-2">
@@ -48,7 +49,7 @@ const WeHelp = () => {
           <div className="money food_donate bg-cover bg-no-repeat bg-center shadow hover:shadow-md rounded-md">
             <div className="text-center h-96 bg-[#ffffffc2] flex justify-center items-center">
               <div className="w-3/4 mx-auto">
-                <h1 className="text-3xl text-primary-700 text-center font-medium ">
+                <h1 className="text-3xl text-secondary text-center font-medium ">
                   {" "}
                   Donate Money{" "}
                 </h1>
@@ -63,7 +64,7 @@ const WeHelp = () => {
           <div className="volunteer food_donate bg-cover bg-no-repeat bg-center shadow hover:shadow-md rounded-md">
             <div className="text-center h-96 bg-[#ffffffc2] flex justify-center items-center">
               <div className="w-3/4 mx-auto">
-                <h1 className="text-3xl text-primary-700 text-center font-medium ">
+                <h1 className="text-3xl text-secondary text-center font-medium ">
                   {" "}
                   Volunteer{" "}
                 </h1>
