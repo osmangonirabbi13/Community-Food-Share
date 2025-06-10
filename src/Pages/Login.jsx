@@ -8,7 +8,7 @@ import { use } from "react";
 import { AuthContext } from "../Provider/AuthContext";
 
 const Login = () => {
-  const { signIn } = use(AuthContext);
+  const { signIn, signInGoogle } = use(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,6 +22,18 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         toast.success("Login Successful");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+  };
+
+  const handleGoogle = () => {
+    signInGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Google Sign-In Successful");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -81,7 +93,7 @@ const Login = () => {
           </form>
 
           <div className="divider"></div>
-          <button className="mt-4 btn w-full">
+          <button onClick={handleGoogle} className="mt-4 btn w-full">
             <FaGoogle /> Login with google
           </button>
           <p className="text-sm mt-2">
