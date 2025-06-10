@@ -32,7 +32,9 @@ const addFood = () => {
           <h1 className="text-3xl font-bold">Add A New Food</h1>
         </div>
         <form onSubmit={handleAddFood} className="grid gap-4">
-          <label className="label">Food Name : </label>
+          <label className="label text-black font-bold text-lg">
+            Food Name :{" "}
+          </label>
           <input
             name="foodName"
             className="input input-bordered w-full"
@@ -40,7 +42,9 @@ const addFood = () => {
             required
           />
           {/* Food Image URL */}
-          <label className="label">Food Image URL : </label>
+          <label className="label text-black font-bold text-lg">
+            Food Image URL :{" "}
+          </label>
           <input
             name="foodImageUrl"
             className="input input-bordered w-full"
@@ -50,7 +54,9 @@ const addFood = () => {
           />
           {/* Pickup Location */}
 
-          <label className="label">Pickup Location : </label>
+          <label className="label text-black font-bold text-lg">
+            Pickup Location :{" "}
+          </label>
           <input
             name="pickupLocation"
             className="input input-bordered w-full"
@@ -60,7 +66,9 @@ const addFood = () => {
 
           <div className="flex w-full gap-5">
             <div className="card  rounded-box grid h-20 grow ">
-              <label className="label ">Food Quantity :</label>
+              <label className="label text-black font-bold text-lg">
+                Food Quantity :
+              </label>
               <input
                 type="number"
                 name="foodQuantity"
@@ -71,7 +79,9 @@ const addFood = () => {
             </div>
 
             <div className="card  rounded-box grid h-20 grow ">
-              <label className="label">Expired Time :</label>
+              <label className="label text-black font-bold text-lg">
+                Expired Time :
+              </label>
               <select
                 name="expiredTime"
                 className="select select-bordered w-full"
@@ -90,7 +100,9 @@ const addFood = () => {
             </div>
           </div>
 
-          <label className="label">Additional Notes : </label>
+          <label className="label text-black font-bold text-lg">
+            Additional Notes :{" "}
+          </label>
           <textarea
             name="description"
             className="textarea textarea-bordered w-full"
