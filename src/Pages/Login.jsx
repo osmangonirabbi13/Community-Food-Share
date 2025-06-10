@@ -3,9 +3,12 @@ import myAnimation1 from "../assets/Lottie/login.json";
 import { Link } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import { use } from "react";
+import { AuthContext } from "../Provider/AuthContext";
 
 const Login = () => {
+  const { signIn } = use(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +16,16 @@ const Login = () => {
     const password = form.password.value;
 
     console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("Login Successful");
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
   return (
     <div className="mt-16 p-4 flex justify-center">
