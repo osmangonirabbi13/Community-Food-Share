@@ -1,11 +1,13 @@
-import React from "react";
+import React, { use } from "react";
 import { IoMdPhotos } from "react-icons/io";
 import { Link } from "react-router";
 import myAnimation from "../assets/Lottie/register.json";
 import Lottie from "lottie-react";
 import toast, { Toaster } from "react-hot-toast";
+import { AuthContext } from "../Provider/AuthContext";
 
 const Register = () => {
+  const { createUser } = use(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,6 +17,15 @@ const Register = () => {
     const password = form.password.value;
     const terms = form.terms.checked;
     console.log(name, email, photoURL, password, terms);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     if (password.length < 6) {
       return toast.error("Password must be at least 6 characters long!");
