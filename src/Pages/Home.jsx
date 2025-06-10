@@ -1,9 +1,10 @@
 import React from "react";
+import Hero from "../Components/Hero Seation/Hero";
 
 const Home = () => {
   return (
     <div className=" w-full">
-      <h1>home tab </h1>
+      <Hero />
     </div>
   );
 };

@@ -4,10 +4,26 @@ const addFood = () => {
   const handleAddFood = (e) => {
     e.preventDefault();
     const form = e.target;
-    const formData = new FormData(form);
-    const newTask = Object.fromEntries(formData.entries());
 
-    console.log(newTask);
+    const foodName = form.foodName.value || "Unknown";
+    const foodImageUrl = form.foodImageUrl.value || "Unknown";
+    const pickupLocation = form.pickupLocation.value || "Unknown";
+    const foodQuantity = form.foodQuantity.value || "Unknown";
+    const expiredTime = form.expiredTime.value || "Unknown";
+    const description = form.description.value || "Unknown";
+    const foodStatus = "Available";
+
+    const newFood = {
+      foodName,
+      foodImageUrl,
+      pickupLocation,
+      foodQuantity,
+      expiredTime,
+      description,
+      foodStatus,
+    };
+
+    console.log(newFood);
   };
   return (
     <div className=" px-2 py-2  lg:px-50 lg:py-10">
@@ -44,7 +60,7 @@ const addFood = () => {
 
           <div className="flex w-full gap-5">
             <div className="card  rounded-box grid h-20 grow ">
-              <label className="label ">Food Quantity</label>
+              <label className="label ">Food Quantity :</label>
               <input
                 type="number"
                 name="foodQuantity"
@@ -55,13 +71,13 @@ const addFood = () => {
             </div>
 
             <div className="card  rounded-box grid h-20 grow ">
-              <label className="label">Expired Time</label>
+              <label className="label">Expired Time :</label>
               <select
                 name="expiredTime"
                 className="select select-bordered w-full"
                 required
               >
-                <option value="">Expired Time</option>
+                <option value="">Expired Time </option>
                 <option value="3">3 hr</option>
                 <option value="7">7 hr</option>
                 <option value="12">12 hr</option>
