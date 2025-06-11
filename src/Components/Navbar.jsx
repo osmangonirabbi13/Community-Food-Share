@@ -1,7 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
 
 const Navbar = () => {
+  const { user } = use(AuthContext);
   const Links = (
     <ul className="dark:bg-gray-900 text-black dark:text-white">
       <li>
@@ -76,7 +78,61 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end"></div>
+        <div className="navbar-end">
+          {user ? (
+            <div className="flex gap-2 ">
+              {/* nav  bar end  */}
+
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle w-14 h-14 avatar"
+                >
+                  <div className="w-10  rounded-full">
+                    <img
+                      className=" "
+                      alt="user profile"
+                      src={`${user && user.photoURL}`}
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3  w-70 p-2 shadow "
+                >
+                  <li>
+                    <div className="flex flex-col pb-4 items-start border-b-2 border-gray-200">
+                      <p className=" text-sm pb-2 ">
+                        {user && user.displayName}
+                      </p>
+                      <p className="">{user && user.email}</p>
+                    </div>
+                  </li>
+                  <li></li>
+                  <li>
+                    <button>Logout</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <>
+              <NavLink
+                to="/auth/login"
+                className="btn btn-secondary px-6 md:px-10"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/auth/register"
+                className="btn btn-secondary ml-5 mr-4 px-6 md:px-10"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );
