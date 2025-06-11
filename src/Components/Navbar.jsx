@@ -1,9 +1,23 @@
 import React, { use } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
-  const { user } = use(AuthContext);
+  const { user, signOutUser, loading } = use(AuthContext);
+
+  const handleLogOut = () => {
+    signOutUser()
+      .then(() => {
+        if (!loading) {
+          return toast.success("Logout Successfull");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const Links = (
     <ul className="dark:bg-gray-900 text-black dark:text-white">
       <li>
@@ -111,7 +125,7 @@ const Navbar = () => {
                   </li>
                   <li></li>
                   <li>
-                    <button>Logout</button>
+                    <button onClick={handleLogOut}>Logout</button>
                   </li>
                 </ul>
               </div>
@@ -134,6 +148,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </nav>
   );
 };
