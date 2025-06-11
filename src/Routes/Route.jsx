@@ -4,7 +4,8 @@ import Home from "../Pages/Home";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/Login";
-import addFood from "../Pages/addFood";
+import PrivateRoute from "../Provider/PrivateRoute";
+import AddFood from "../Pages/addFood";
 
 export const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-food",
-        Component: addFood,
+        element: (
+          <PrivateRoute>
+            <AddFood />
+          </PrivateRoute>
+        ),
       },
     ],
   },

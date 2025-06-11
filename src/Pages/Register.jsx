@@ -1,13 +1,18 @@
 import React, { use } from "react";
 import { IoMdPhotos } from "react-icons/io";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import myAnimation from "../assets/Lottie/register.json";
 import Lottie from "lottie-react";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../Provider/AuthContext";
+import Loading from "./Loading";
 
 const Register = () => {
-  const { createUser, updateUserProfile, setUser } = use(AuthContext);
+  const { createUser, updateUserProfile, setUser, loading } = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state || "/";
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,12 +23,35 @@ const Register = () => {
     const terms = form.terms.checked;
     console.log(name, email, photoURL, password, terms);
 
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const isLongEnough = password.length >= 6;
+
+    if (!hasUppercase) {
+      return toast.error(
+        "Password must contain at least one uppercase letter!"
+      );
+    } else if (!hasLowercase) {
+      return toast.error(
+        "Password must contain at least one lowercase letter!"
+      );
+    } else if (!isLongEnough) {
+      return toast.error("Password must be at least 6 characters long!");
+    } else if (!terms) {
+      return toast.error("Please accept the Terms & Conditions!");
+    }
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from);
+
         updateUserProfile(name, photoURL).then(() => {
           setUser({ ...user, displayName: name, photoURL: photoURL });
+          if (loading) {
+            return <Loading />;
+          }
           // const userProfile = {
           //   email,
           //   name,
@@ -35,24 +63,24 @@ const Register = () => {
         console.log(error);
       });
 
-    if (password.length < 6) {
-      return toast.error("Password must be at least 6 characters long!");
-    }
+    // if (password.length < 6) {
+    //   return toast.error("Password must be at least 6 characters long!");
+    // }
 
-    if (!/[A-Z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one uppercase letter!"
-      );
-    }
-    if (!/[a-z]/.test(password)) {
-      return toast.error(
-        "Password must contain at least one lowercase letter!"
-      );
-    }
+    // if (!/[A-Z]/.test(password)) {
+    //   return toast.error(
+    //     "Password must contain at least one uppercase letter!"
+    //   );
+    // }
+    // if (!/[a-z]/.test(password)) {
+    //   return toast.error(
+    //     "Password must contain at least one lowercase letter!"
+    //   );
+    // }
 
-    if (!terms) {
-      return toast.error("Please accept the Terms & Conditions!");
-    }
+    // if (!terms) {
+    //   return toast.error("Please accept the Terms & Conditions!");
+    // }
   };
   return (
     <div className="mt-16 p-4 flex justify-center">

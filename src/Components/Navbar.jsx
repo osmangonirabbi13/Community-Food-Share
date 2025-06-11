@@ -2,9 +2,14 @@ import React, { use } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
+import Loading from "../Pages/Loading";
 
 const Navbar = () => {
   const { user, signOutUser, loading } = use(AuthContext);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const handleLogOut = () => {
     signOutUser()

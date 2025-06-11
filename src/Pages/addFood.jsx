@@ -1,6 +1,6 @@
 import React from "react";
 
-const addFood = () => {
+const AddFood = () => {
   const handleAddFood = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -121,4 +121,4 @@ const addFood = () => {
   );
 };
 
-export default addFood;
+export default AddFood;
