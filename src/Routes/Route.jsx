@@ -6,6 +6,7 @@ import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Pages/Login";
 import PrivateRoute from "../Provider/PrivateRoute";
 import AddFood from "../Pages/addFood";
+import AvailableFoods from "../Pages/AvailableFoods";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
             <AddFood />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/available-foods",
+        Component: AvailableFoods,
       },
     ],
   },

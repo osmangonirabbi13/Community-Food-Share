@@ -29,10 +29,10 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink>Available Foods</NavLink>
+        <NavLink to="/available-foods">Available Foods</NavLink>
       </li>
       <li>
-        <NavLink>Add Food</NavLink>
+        <NavLink to="/add-food">Add Food</NavLink>
       </li>
       <li>
         <NavLink>Manage My Foods</NavLink>
@@ -84,7 +84,7 @@ const Navbar = () => {
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink>Available Foods</NavLink>
+              <NavLink to="/available-foods">Available Foods</NavLink>
             </li>
             <li>
               <NavLink to="/add-food">Add Food</NavLink>

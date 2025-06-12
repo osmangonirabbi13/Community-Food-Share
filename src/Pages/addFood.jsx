@@ -1,6 +1,10 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../Provider/AuthContext";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddFood = () => {
+  const { user } = use(AuthContext);
   const handleAddFood = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -12,6 +16,10 @@ const AddFood = () => {
     const expiredTime = form.expiredTime.value || "Unknown";
     const description = form.description.value || "Unknown";
     const foodStatus = "Available";
+    const donator_image =
+      user?.photoURL || "https://i.ibb.co/k2mWfq6/placeholder.jpg";
+    const donator_name = user?.displayName || "Unknown";
+    const donator_email = user?.email || "Unknown";
 
     const newFood = {
       foodName,
@@ -21,9 +29,24 @@ const AddFood = () => {
       expiredTime,
       description,
       foodStatus,
+      donator_image,
+      donator_name,
+      donator_email,
     };
 
-    console.log(newFood);
+    // save job to the database
+
+    axios
+      .post("http://localhost:3000/foodshares", newFood)
+      .then((res) => {
+        if (res.data.insertedId) {
+          toast.success("Food added successfully");
+          form.reset();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className=" px-2 py-2  lg:px-50 lg:py-10">
@@ -117,6 +140,7 @@ const AddFood = () => {
           />
         </form>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
