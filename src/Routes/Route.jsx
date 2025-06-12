@@ -7,6 +7,8 @@ import Login from "../Pages/Login";
 import PrivateRoute from "../Provider/PrivateRoute";
 import AddFood from "../Pages/addFood";
 import AvailableFoods from "../Pages/AvailableFoods";
+import SingleFood from "../Pages/SingleFood";
+import Loading from "../Pages/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -27,8 +29,16 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/available-foods",
+        path: "/available-food",
         Component: AvailableFoods,
+      },
+      {
+        path: "/available-food/:id",
+        element: (
+          <PrivateRoute>
+            <SingleFood />
+          </PrivateRoute>
+        ),
       },
     ],
   },

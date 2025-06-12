@@ -120,7 +120,7 @@ const AvailableFoods = () => {
           </form>
           <form className="min-w-[350px] lg:min-w-max">
             <select
-              className="select select-bordered w-full max-w-xs "
+              className="select  select-bordered w-full max-w-xs  cursor-pointer"
               name="filterText"
               onChange={(e) => setFilteredText(e.target.value)}
             >
@@ -137,14 +137,14 @@ const AvailableFoods = () => {
           </form>
           <div className="min-w-[350px] lg:min-w-max">
             <button
-              className="border py-2 px-4 rounded-lg border-gray-300  w-full max-w-xs "
+              className="border py-2 px-4 rounded-lg border-gray-300 cursor-pointer  w-full max-w-xs "
               onClick={() => setAsc(!asc)}
             >
               {asc ? "Quantity Low To High" : "Quantity High To Low"}
             </button>
           </div>
           <button
-            className=" py-3 px-4 rounded-lg  hidden lg:flex md:flex    max-w-xs "
+            className=" py-3 px-4 rounded-lg  hidden lg:flex md:flex  cursor-pointer   max-w-xs "
             onClick={() => setIsThreeColumn(!isThreeColumn)}
           >
             {isThreeColumn ? (
