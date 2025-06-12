@@ -8,16 +8,31 @@ const AvailableFoods = () => {
   const [searchText, setSearchText] = useState("");
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchText = e.target.searchText.value;
+    const searchText = e.target.searchText.value.trim();
     setSearchText(searchText);
   };
 
   useEffect(() => {
     axios.get("http://localhost:3000/foodshares/").then((res) => {
-      console.log(res.data);
       setFoods(res.data);
     });
   }, []);
+
+  useEffect(() => {
+    if (searchText !== "") {
+      axios
+        .get(
+          `http://localhost:3000/get-donated-search-foods?search=${searchText}`
+        )
+        .then((res) => {
+          setFoods(res.data);
+        });
+    } else {
+      axios.get("http://localhost:3000/foodshares/").then((res) => {
+        setFoods(res.data);
+      });
+    }
+  }, [searchText]);
 
   return (
     <div>
@@ -54,9 +69,9 @@ const AvailableFoods = () => {
               <input
                 type="text"
                 name="searchText"
-                placeholder="Search Foods"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
+                placeholder="Search Foods"
                 id="default-search"
                 className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
                 required
@@ -104,9 +119,7 @@ const AvailableFoods = () => {
         <section>
           {foods.length === 0 ? (
             <>
-              <p>
-                <Loading />
-              </p>
+              <Loading />
             </>
           ) : (
             <>
