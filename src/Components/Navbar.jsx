@@ -43,7 +43,7 @@ const Navbar = () => {
     </ul>
   );
   return (
-    <nav>
+    <nav className="header-menu">
       <div className="navbar   p-0 bg-white px-2 md:px-12 lg:px-16 xl:px-50 lg:py-4 body items-center dark:shadow-sm dark:bg-gray-900 text-black dark:text-white border-b-1 border-blue-100">
         {/* Nav bar start  */}
         <div className="navbar-start">

@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import AvailableFoodCard from "../Components/AvailableFoodCard";
 import axios from "axios";
 import Loading from "./Loading";
+import { LuColumns3 } from "react-icons/lu";
+import { FiColumns } from "react-icons/fi";
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [filteredText, setFilteredText] = useState("");
+  const [isThreeColumn, setIsThreeColumn] = useState(true);
+  const [asc, setAsc] = useState(true);
+
   const handleSearch = (e) => {
     e.preventDefault();
     const searchText = e.target.searchText.value.trim();
@@ -33,6 +39,34 @@ const AvailableFoods = () => {
       });
     }
   }, [searchText]);
+
+  useEffect(() => {
+    if (filteredText) {
+      axios
+        .get(
+          `http://localhost:3000/get-donated-filtered-foods?filtered=${filteredText}`
+        )
+        .then((res) => {
+          setFoods(res.data);
+        });
+    } else {
+      axios.get("http://localhost:3000/foodshares/").then((res) => {
+        setFoods(res.data);
+      });
+    }
+  }, [filteredText]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://localhost:3000/get-donated-sorted-foods?sort=${
+          asc ? "asc" : "desc"
+        }`
+      )
+      .then((res) => {
+        setFoods(res.data);
+      });
+  }, [asc]);
 
   return (
     <div>
@@ -102,13 +136,23 @@ const AvailableFoods = () => {
             </select>
           </form>
           <div className="min-w-[350px] lg:min-w-max">
-            {/* <button
-              className="border py-3 px-4 rounded-lg border-black dark:border-white w-full max-w-xs dark:text-white dark:bg-gray-600"
+            <button
+              className="border py-2 px-4 rounded-lg border-gray-300  w-full max-w-xs "
               onClick={() => setAsc(!asc)}
             >
               {asc ? "Quantity Low To High" : "Quantity High To Low"}
-            </button> */}
+            </button>
           </div>
+          <button
+            className=" py-3 px-4 rounded-lg  hidden lg:flex md:flex    max-w-xs "
+            onClick={() => setIsThreeColumn(!isThreeColumn)}
+          >
+            {isThreeColumn ? (
+              <FiColumns size={40} color="blue" />
+            ) : (
+              <LuColumns3 size={40} />
+            )}
+          </button>
         </section>
         <section>
           <h1 className="text-4xl font-medium text-center pb-14 ">
@@ -123,12 +167,13 @@ const AvailableFoods = () => {
             </>
           ) : (
             <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-9">
+              <div
+                className={`grid grid-cols-1 md:grid-cols-2 ${
+                  isThreeColumn ? "lg:grid-cols-3" : "lg:grid-cols-2"
+                } gap-5 lg:gap-9`}
+              >
                 {foods.map((food) => (
-                  <AvailableFoodCard
-                    key={food._id}
-                    food={food}
-                  ></AvailableFoodCard>
+                  <AvailableFoodCard key={food._id} food={food} />
                 ))}
               </div>
             </>

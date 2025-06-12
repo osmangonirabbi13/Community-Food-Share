@@ -9,4 +9,12 @@
   font-family:"Ancizar Serif", serif;
 }
 
+/* .header-menu li a.active {
+    background: #FA2371!important;
+    color: white!important;
+} */
+
+a.active{
+  @apply bg-[#FA2371]
+}
 
