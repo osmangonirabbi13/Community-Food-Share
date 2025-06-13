@@ -1,13 +1,15 @@
 import axios from "axios";
-import React, { use, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const SingleFood = () => {
+  const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const [food, setFood] = useState({});
-  const { user } = use(AuthContext);
+  const { user } = useContext(AuthContext);
   const [foodExpireTime, setFoodExpireTime] = useState(null);
   const [foodAddedSuccessPopUp, setFoodAddedSuccessPopUp] = useState(null);
 
@@ -22,11 +24,20 @@ const SingleFood = () => {
     }
   }, [food.expiredTime]);
 
+  // useEffect(() => {
+  //   axios.get(`http://localhost:3000/foodshares/${id}`).then((res) => {
+  //     setFood(res.data);
+  //   });
+  // }, [id]);
   useEffect(() => {
-    axios.get(`http://localhost:3000/foodshares/${id}`).then((res) => {
-      setFood(res.data);
-    });
-  }, [id]);
+    axiosSecure
+      .get(
+        `/get-donated-foods-on-single-page?productId=${id}&verifyUserEmail=${user?.email}`
+      )
+      .then((res) => {
+        setFood(res.data);
+      });
+  }, [id, user?.email]);
 
   const handleFoodRequest = (e) => {
     e.preventDefault();
@@ -65,13 +76,18 @@ const SingleFood = () => {
       donator_email,
     };
 
-    axios
-      .post("http://localhost:3000/user-add-requested-foods", RequestedFood)
+    axiosSecure
+      .post(
+        `/user-add-requested-foods?verifyUserEmail=${user?.email}`,
+        RequestedFood
+      )
       .then((res) => {
         if (res.data.insertedId) {
           setFoodAddedSuccessPopUp(res.data.insertedId);
+
           toast.success("Food added successfully");
           form.reset();
+          document.getElementById("my_modal_3").close();
         }
       });
   };
@@ -161,7 +177,7 @@ const SingleFood = () => {
                   <div className="sm:col-span-2">
                     <label
                       htmlFor="food_name"
-                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      className="block mb-2 text-sm font-medium text-gray-900 "
                     >
                       Food Name
                     </label>
@@ -169,7 +185,7 @@ const SingleFood = () => {
                       type="text"
                       name="food_name"
                       id="food_name"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                       defaultValue={food?.foodName}
                       readOnly
                       required
