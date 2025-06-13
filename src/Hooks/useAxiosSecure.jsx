@@ -23,7 +23,7 @@ const useAxiosSecure = () => {
             .then(() => {
               console.log("logout by Interceptor");
 
-              navigate("/login");
+              navigate("/auth/login");
             })
             .catch((err) => {
               console.log("Interceptor logout error", err);

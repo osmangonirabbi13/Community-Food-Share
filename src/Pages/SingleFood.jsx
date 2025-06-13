@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
@@ -24,11 +23,6 @@ const SingleFood = () => {
     }
   }, [food.expiredTime]);
 
-  // useEffect(() => {
-  //   axios.get(`http://localhost:3000/foodshares/${id}`).then((res) => {
-  //     setFood(res.data);
-  //   });
-  // }, [id]);
   useEffect(() => {
     axiosSecure
       .get(
@@ -37,7 +31,7 @@ const SingleFood = () => {
       .then((res) => {
         setFood(res.data);
       });
-  }, [id, user?.email]);
+  }, [id, axiosSecure, user?.email]);
 
   const handleFoodRequest = (e) => {
     e.preventDefault();

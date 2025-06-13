@@ -8,12 +8,13 @@ import PrivateRoute from "../Provider/PrivateRoute";
 import AddFood from "../Pages/addFood";
 import AvailableFoods from "../Pages/AvailableFoods";
 import SingleFood from "../Pages/SingleFood";
-import Loading from "../Pages/Loading";
+import FoodRequest from "../Pages/FoodRequest";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayouts,
+
     children: [
       {
         path: "/",
@@ -37,6 +38,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <SingleFood />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "food-request",
+        element: (
+          <PrivateRoute>
+            <FoodRequest />
           </PrivateRoute>
         ),
       },
