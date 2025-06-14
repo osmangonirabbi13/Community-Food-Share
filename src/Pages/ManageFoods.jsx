@@ -3,11 +3,12 @@ import { AuthContext } from "../Provider/AuthContext";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Link } from "react-router";
+import Loading from "./Loading";
 
 const ManageFoods = () => {
   const axiosSecure = useAxiosSecure();
   const [foods, setFoods] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
   useEffect(() => {
     axiosSecure
@@ -16,6 +17,10 @@ const ManageFoods = () => {
         setFoods(res.data);
       });
   }, [axiosSecure, user?.email]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   const handleDelete = (foodId) => {
     Swal.fire({
@@ -34,7 +39,6 @@ const ManageFoods = () => {
           )
           .then((res) => {
             if (res.data.deletedCount > 0) {
-              // update foods list
               axiosSecure
                 .get(
                   `/get-donated-foods-on-manage-my-food?userEmail=${user?.email}`
@@ -52,7 +56,7 @@ const ManageFoods = () => {
             `/user-requested-food-delete-by-donar?requestedFoodId=${foodId}&verifyUserEmail=${user?.email}`
           )
           .then((res) => {
-            res.data; // optional
+            res.data;
           });
       }
     });
@@ -93,14 +97,16 @@ const ManageFoods = () => {
                     {food.foodStatus}
                   </td>
                   <td className="px-4 py-2">
-                    <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
-                      Edit
-                    </button>
+                    <Link to={`/update/${food._id}`}>
+                      <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+                        Edit
+                      </button>
+                    </Link>
                   </td>
                   <td className="px-4 py-2">
                     <button
                       onClick={() => handleDelete(food._id)}
-                      className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                      className=" text-white px-3 py-1 rounded btn btn-error hover:bg-secondary"
                     >
                       Delete
                     </button>

@@ -3,10 +3,11 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { AuthContext } from "../Provider/AuthContext";
 import FoodRequestCard from "../Components/FoodRequestCard";
 import Swal from "sweetalert2";
+import Loading from "./Loading";
 const FoodRequest = () => {
   const axiosSecure = useAxiosSecure();
   const [foods, setFoods] = useState();
-  const { user } = use(AuthContext);
+  const { user, loading } = use(AuthContext);
 
   useEffect(() => {
     axiosSecure
@@ -15,6 +16,9 @@ const FoodRequest = () => {
         setFoods(res.data);
       });
   }, [axiosSecure, user?.email]);
+  if (loading) {
+    return <Loading />;
+  }
 
   const handleDelete = (foodId) => {
     Swal.fire({
