@@ -42,17 +42,34 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      if (currentUser?.email) {
+
+      const userEmail = currentUser?.email || user?.email;
+      // set a token for this user
+      if (currentUser) {
         axios
           .post(
             "http://localhost:3000/jwt",
-            { email: currentUser.email },
+            { email: userEmail },
             { withCredentials: true }
           )
-          .then((res) => console.log(res.data))
-          .catch((error) => console.log(error));
-      }
+          .then((res) => {
+            console.log("Token set : ", res.data);
+          });
+      } // set a token for this user end
+      //remove token if user logout
+      else {
+        axios
+          .post(
+            "http://localhost:3000/logout",
+            { email: userEmail },
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log("Token removed", res.data);
+          });
+      } //remove token if user logout end
     });
+
     return () => {
       unSubscribe();
     };

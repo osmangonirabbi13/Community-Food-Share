@@ -35,7 +35,7 @@ const Navbar = () => {
         <NavLink to="/add-food">Add Food</NavLink>
       </li>
       <li>
-        <NavLink>Manage My Foods</NavLink>
+        <NavLink to="/manage-foods">Manage My Foods</NavLink>
       </li>
       <li>
         <NavLink to="/food-request">My Food Request</NavLink>
@@ -90,7 +90,7 @@ const Navbar = () => {
               <NavLink to="/add-food">Add Food</NavLink>
             </li>
             <li>
-              <NavLink>Manage My Foods</NavLink>
+              <NavLink to="/manage-foods">Manage My Foods</NavLink>
             </li>
             <li>
               <NavLink to="/food-request">My Food Request</NavLink>
