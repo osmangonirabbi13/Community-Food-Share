@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import AvailableFoodCard from "../Components/AvailableFoodCard";
-import axios from "axios";
 import Loading from "./Loading";
 import { LuColumns3 } from "react-icons/lu";
 import { FiColumns } from "react-icons/fi";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const AvailableFoods = () => {
+  const axiosSecure = useAxiosSecure();
   const [foods, setFoods] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filteredText, setFilteredText] = useState("");
@@ -19,54 +20,46 @@ const AvailableFoods = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3000/foodshares/").then((res) => {
+    axiosSecure.get("/foodshares").then((res) => {
       setFoods(res.data);
     });
-  }, []);
+  }, [axiosSecure]);
 
   useEffect(() => {
     if (searchText !== "") {
-      axios
-        .get(
-          `http://localhost:3000/get-donated-search-foods?search=${searchText}`
-        )
+      axiosSecure
+        .get(`/get-donated-search-foods?search=${searchText}`)
         .then((res) => {
           setFoods(res.data);
         });
     } else {
-      axios.get("http://localhost:3000/foodshares/").then((res) => {
+      axiosSecure.get("/foodshares").then((res) => {
         setFoods(res.data);
       });
     }
-  }, [searchText]);
+  }, [searchText, axiosSecure]);
 
   useEffect(() => {
     if (filteredText) {
-      axios
-        .get(
-          `http://localhost:3000/get-donated-filtered-foods?filtered=${filteredText}`
-        )
+      axiosSecure
+        .get(`/get-donated-filtered-foods?filtered=${filteredText}`)
         .then((res) => {
           setFoods(res.data);
         });
     } else {
-      axios.get("http://localhost:3000/foodshares/").then((res) => {
+      axiosSecure.get("/foodshares").then((res) => {
         setFoods(res.data);
       });
     }
-  }, [filteredText]);
+  }, [filteredText, axiosSecure]);
 
   useEffect(() => {
-    axios
-      .get(
-        `http://localhost:3000/get-donated-sorted-foods?sort=${
-          asc ? "asc" : "desc"
-        }`
-      )
+    axiosSecure
+      .get(`/get-donated-sorted-foods?sort=${asc ? "asc" : "desc"}`)
       .then((res) => {
         setFoods(res.data);
       });
-  }, [asc]);
+  }, [asc, axiosSecure]);
 
   return (
     <div>
@@ -78,7 +71,7 @@ const AvailableFoods = () => {
           >
             <label
               htmlFor="default-search"
-              className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+              className="mb-2 text-sm font-medium text-gray-900 sr-only "
             >
               Search
             </label>

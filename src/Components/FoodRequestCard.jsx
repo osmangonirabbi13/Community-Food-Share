@@ -30,19 +30,19 @@ const FoodRequestCard = ({ food, handleDelete }) => {
         <p className="py-1 ">
           <b>Donar Name :</b> {donator_name}{" "}
         </p>
-        <p className="py-1 dark:text-white">
+        <p className="py-1 ">
           <b>Donar Email :</b> {donator_email}{" "}
         </p>
-        <p className="py-1 dark:text-white">
+        <p className="py-1 ">
           <b>Expire Time :</b> {expiredTime}{" "}
         </p>
-        <p className="py-1 dark:text-white">
+        <p className="py-1 ">
           <b>Pickup Location :</b> {pickupLocation}{" "}
         </p>
-        <p className="py-1 dark:text-white">
+        <p className="py-1 ">
           <b>Request Date :</b> {request_date}{" "}
         </p>
-        <p className="py-1 dark:text-white">
+        <p className="py-1 ">
           <b>Food Status :</b>{" "}
           <span
             className={

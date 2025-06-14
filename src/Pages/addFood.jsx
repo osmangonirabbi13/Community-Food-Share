@@ -1,10 +1,11 @@
 import React, { use } from "react";
 import { AuthContext } from "../Provider/AuthContext";
-import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const AddFood = () => {
   const { user } = use(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const handleAddFood = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -36,8 +37,8 @@ const AddFood = () => {
 
     // save job to the database
 
-    axios
-      .post("http://localhost:3000/foodshares", newFood)
+    axiosSecure
+      .post("/foodshares", newFood)
       .then((res) => {
         if (res.data.insertedId) {
           toast.success("Food added successfully");

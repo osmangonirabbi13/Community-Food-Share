@@ -69,17 +69,17 @@ const ManageFoods = () => {
       </h1>
 
       {foods.length === 0 ? (
-        <p>No foods found.</p>
+        <p className="text-center text-2xl">No foods found.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="table w-full border border-gray-300">
-            <thead className="bg-gray-100">
+            <thead className="bg-gray-100 ">
               <tr>
-                <th>#</th>
-                <th>Food Name</th>
-                <th>Status</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th className="font-bold md:text-2xl">#</th>
+                <th className="font-bold md:text-2xl">Food Name</th>
+                <th className="font-bold md:text-2xl">Status</th>
+                <th className="font-bold md:text-2xl">Edit</th>
+                <th className="font-bold md:text-2xl">Delete</th>
               </tr>
             </thead>
             <tbody>

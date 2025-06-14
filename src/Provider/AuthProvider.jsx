@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
 
       const userEmail = currentUser?.email || user?.email;
-      // set a token for this user
+
       if (currentUser) {
         axios
           .post(
@@ -53,11 +53,9 @@ const AuthProvider = ({ children }) => {
             { withCredentials: true }
           )
           .then((res) => {
-            console.log("Token set : ", res.data);
+            console.log(res.data);
           });
-      } // set a token for this user end
-      //remove token if user logout
-      else {
+      } else {
         axios
           .post(
             "http://localhost:3000/logout",
@@ -65,7 +63,7 @@ const AuthProvider = ({ children }) => {
             { withCredentials: true }
           )
           .then((res) => {
-            console.log("Token removed", res.data);
+            console.log(res.data);
           });
       } //remove token if user logout end
     });
@@ -73,7 +71,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unSubscribe();
     };
-  }, []);
+  }, [user?.email]);
 
   const updateUserProfile = (name, photoUrl) => {
     return updateProfile(auth.currentUser, {

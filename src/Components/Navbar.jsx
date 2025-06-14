@@ -118,19 +118,24 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3  w-70 p-2 shadow "
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-2  w-80 p-2 shadow "
                 >
                   <li>
                     <div className="flex flex-col pb-4 items-start border-b-2 border-gray-200">
                       <p className=" text-sm pb-2 ">
                         {user && user.displayName}
                       </p>
-                      <p className="">{user && user.email}</p>
+                      <p className="text-xl">{user && user.email}</p>
                     </div>
                   </li>
                   <li></li>
                   <li>
-                    <button onClick={handleLogOut}>Logout</button>
+                    <button
+                      className="btn btn-secondary text-center font-semibold"
+                      onClick={handleLogOut}
+                    >
+                      Logout
+                    </button>
                   </li>
                 </ul>
               </div>
