@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import { AuthContext } from "../Provider/AuthContext";
 import FeatureFoodsCard from "../Components/FeatureFoodsCard";
 import { Link } from "react-router";
-
+import { Fade } from "react-awesome-reveal";
 const FeatureFoods = () => {
   const axiosSecure = useAxiosSecure();
   const { loading } = use(AuthContext);
@@ -40,11 +40,14 @@ const FeatureFoods = () => {
           Delicious Meals Making a Difference Savor the Flavor of Generosity
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-screen-2xl  mx-auto px-8 md:px-12 lg:px-16">
-        {foods.map((food) => (
-          <FeatureFoodsCard key={food._id} food={food}></FeatureFoodsCard>
-        ))}
-      </div>
+      <Fade direction="left" duration={1800}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-screen-2xl  mx-auto px-8 md:px-12 lg:px-16">
+          {foods.map((food) => (
+            <FeatureFoodsCard key={food._id} food={food}></FeatureFoodsCard>
+          ))}
+        </div>
+      </Fade>
+
       <div className="pt-10 flex items-center justify-center">
         <Link to="available-food">
           {" "}

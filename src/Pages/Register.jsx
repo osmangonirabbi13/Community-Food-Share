@@ -133,13 +133,17 @@ const Register = () => {
               <IoMdPhotos />
             </div>
             <input
-              type="text"
+              type="url"
+              className="input validator"
               name="photoURL"
-              className="grow"
-              placeholder="Photo URL"
               required
+              placeholder="Photo URL"
+              pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9-].*[a-zA-Z0-9])?.)+[a-zA-Z].*$"
+              title="Must be valid URL"
             />
+            <p className="validator-hint">Must be valid URL</p>
           </label>
+          <p className="validator-hint">Must be valid URL</p>
           <div className="flex items-start">
             <div className="flex items-center h-5 pl-0">
               <input

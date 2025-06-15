@@ -76,6 +76,7 @@ const AddFood = () => {
 "
             required
           />
+
           {/* Pickup Location */}
 
           <label className="label text-black font-bold text-lg">

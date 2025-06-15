@@ -21,7 +21,6 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     axiosSecure.get("/foodshares").then((res) => {
-      console.log(res.data);
       setFoods(res.data);
     });
   }, [axiosSecure]);

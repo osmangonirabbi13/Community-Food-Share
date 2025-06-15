@@ -3,6 +3,7 @@ import Hero from "../Components/Hero Seation/Hero";
 import OurMission from "../Components/ourMission";
 import WeHelp from "../Components/WeHelp/WeHelp";
 import FeatureFoods from "./FeatureFoods";
+import GetTouch from "../Components/GetTouch";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <FeatureFoods />
       <OurMission />
       <WeHelp />
+      <GetTouch />
     </div>
   );
 };
