@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
 import myAnimation1 from "../assets/Lottie/login.json";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { FaGoogle } from "react-icons/fa";
 
 import toast, { Toaster } from "react-hot-toast";
@@ -9,9 +9,8 @@ import { AuthContext } from "../Provider/AuthContext";
 
 const Login = () => {
   const { signIn, signInGoogle } = use(AuthContext);
-  const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state || "/";
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -24,7 +23,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
 
-        navigate(from);
+        navigate("/");
         toast.success("Login Successful");
       })
       .catch((error) => {
@@ -36,8 +35,8 @@ const Login = () => {
     signInGoogle()
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        navigate(from);
+
+        navigate("/");
         toast.success("Google Sign-In Successful");
       })
       .catch((error) => {

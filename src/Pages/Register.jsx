@@ -1,6 +1,6 @@
 import React, { use } from "react";
 import { IoMdPhotos } from "react-icons/io";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import myAnimation from "../assets/Lottie/register.json";
 import Lottie from "lottie-react";
 import toast, { Toaster } from "react-hot-toast";
@@ -9,9 +9,8 @@ import Loading from "./Loading";
 
 const Register = () => {
   const { createUser, updateUserProfile, setUser, loading } = use(AuthContext);
-  const location = useLocation();
+
   const navigate = useNavigate();
-  const from = location.state || "/";
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -21,7 +20,6 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const password = form.password.value;
     const terms = form.terms.checked;
-    console.log(name, email, photoURL, password, terms);
 
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
@@ -44,8 +42,8 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        navigate(from);
+
+        navigate("/");
 
         updateUserProfile(name, photoURL).then(() => {
           setUser({ ...user, displayName: name, photoURL: photoURL });
@@ -62,25 +60,6 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
       });
-
-    // if (password.length < 6) {
-    //   return toast.error("Password must be at least 6 characters long!");
-    // }
-
-    // if (!/[A-Z]/.test(password)) {
-    //   return toast.error(
-    //     "Password must contain at least one uppercase letter!"
-    //   );
-    // }
-    // if (!/[a-z]/.test(password)) {
-    //   return toast.error(
-    //     "Password must contain at least one lowercase letter!"
-    //   );
-    // }
-
-    // if (!terms) {
-    //   return toast.error("Please accept the Terms & Conditions!");
-    // }
   };
   return (
     <div className="mt-16 p-4 flex justify-center">

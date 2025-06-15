@@ -42,30 +42,18 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-
       const userEmail = currentUser?.email || user?.email;
-
       if (currentUser) {
         axios
           .post(
-            "http://localhost:3000/jwt",
+            "https://food-shareing-website.vercel.app/jwt",
             { email: userEmail },
             { withCredentials: true }
           )
           .then((res) => {
             console.log(res.data);
           });
-      } else {
-        axios
-          .post(
-            "http://localhost:3000/logout",
-            { email: userEmail },
-            { withCredentials: true }
-          )
-          .then((res) => {
-            console.log(res.data);
-          });
-      } //remove token if user logout end
+      }
     });
 
     return () => {

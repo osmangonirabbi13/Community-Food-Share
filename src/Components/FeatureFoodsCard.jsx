@@ -1,7 +1,10 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
+import Loading from "../Pages/Loading";
 
 const FeatureFoodsCard = ({ food }) => {
+  const { loading } = use(AuthContext);
   const {
     foodName,
     foodImageUrl,
@@ -14,6 +17,10 @@ const FeatureFoodsCard = ({ food }) => {
     _id,
     foodStatus,
   } = food;
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="shadow-md rounded-md p-3 border border-[#E5E7EB] group ">
       <div className="relative">
@@ -25,7 +32,7 @@ const FeatureFoodsCard = ({ food }) => {
           />
         </Link>
         <Link to={foodStatus === "Available" ? `/available-food/${_id}` : "/"}>
-          <h1 className="text-2xl font-medium py-4 group-hover:text-primary-defaultPrimaryColor ">
+          <h1 className="text-2xl font-medium py-4 group-hover:text-primary ">
             {" "}
             {foodName}{" "}
           </h1>
@@ -70,7 +77,7 @@ const FeatureFoodsCard = ({ food }) => {
       </div>
       <div className="py-5">
         <Link
-          className={`text-white py-2 px-3 text-sm font-medium rounded-md ${
+          className={`text-black py-2 px-3 text-sm font-medium rounded-md hover:bg-secondary ${
             foodStatus === "Available" ? "bg-accent" : "bg-[#0000004d]"
           }`}
           to={foodStatus === "Available" ? `/available-food/${_id}` : "/"}

@@ -89,7 +89,7 @@ const SingleFood = () => {
   return (
     <div>
       <section className="container mx-auto px-4 py-5">
-        <div className="mx-auto p-10 max-w-3xl shadow hover:shadow-md border my-6 rounded-md">
+        <div className="mx-auto p-10 max-w-3xl shadow hover:shadow-md border border-[#E5E7EB] my-6 rounded-md">
           <h1 className="text-3xl ">Donor Information</h1>
           <img
             className="py-3 w-20 rounded-2xl "
@@ -120,7 +120,7 @@ const SingleFood = () => {
             </span>{" "}
           </p>
         </div>
-        <div className="mx-auto p-3 pb-8 max-w-3xl shadow hover:shadow-md border my-6 rounded-md">
+        <div className="mx-auto p-3 pb-8 max-w-3xl shadow hover:shadow-md border border-[#E5E7EB] my-6 rounded-md">
           <img
             className="pb-3 rounded-xl w-full "
             src={food?.foodImageUrl}

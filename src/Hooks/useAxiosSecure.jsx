@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { signOut } from "firebase/auth";
-import auth from "../Firebase/Firebase.config";
 import { useEffect } from "react";
+import auth from "../Firebase/Firebase.config";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://food-shareing-website.vercel.app",
   withCredentials: true,
 });
 

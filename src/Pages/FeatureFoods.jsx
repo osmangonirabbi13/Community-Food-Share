@@ -4,6 +4,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Loading from "./Loading";
 import { AuthContext } from "../Provider/AuthContext";
 import FeatureFoodsCard from "../Components/FeatureFoodsCard";
+import { Link } from "react-router";
 
 const FeatureFoods = () => {
   const axiosSecure = useAxiosSecure();
@@ -17,7 +18,6 @@ const FeatureFoods = () => {
     queryKey: ["featuredFoods"],
     queryFn: async () => {
       const res = await axiosSecure.get("/featured-Foods");
-      console.log(res.data);
       return res.data;
     },
   });
@@ -44,6 +44,14 @@ const FeatureFoods = () => {
         {foods.map((food) => (
           <FeatureFoodsCard key={food._id} food={food}></FeatureFoodsCard>
         ))}
+      </div>
+      <div className="pt-10 flex items-center justify-center">
+        <Link to="available-food">
+          {" "}
+          <button className="btn btn-accent text-xl px-5 py-2 ">
+            View All
+          </button>{" "}
+        </Link>
       </div>
     </div>
   );

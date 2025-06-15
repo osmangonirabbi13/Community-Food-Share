@@ -21,6 +21,7 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     axiosSecure.get("/foodshares").then((res) => {
+      console.log(res.data);
       setFoods(res.data);
     });
   }, [axiosSecure]);
@@ -156,6 +157,9 @@ const AvailableFoods = () => {
         <section>
           {foods.length === 0 ? (
             <>
+              <p className=" text-2xl text-secondary text-center">
+                No Data Found{" "}
+              </p>
               <Loading />
             </>
           ) : (

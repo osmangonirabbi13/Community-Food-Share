@@ -14,6 +14,7 @@ const ManageFoods = () => {
     axiosSecure
       .get(`/get-donated-foods-on-manage-my-food?userEmail=${user?.email}`)
       .then((res) => {
+        console.log(res.data);
         setFoods(res.data);
       });
   }, [axiosSecure, user?.email]);
