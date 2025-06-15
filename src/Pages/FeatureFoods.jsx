@@ -42,9 +42,11 @@ const FeatureFoods = () => {
       </div>
       <Fade direction="left" duration={1800}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-screen-2xl  mx-auto px-8 md:px-12 lg:px-16">
-          {foods.map((food) => (
-            <FeatureFoodsCard key={food._id} food={food}></FeatureFoodsCard>
-          ))}
+          {foods
+            .sort((a, b) => b.foodQuantity - a.foodQuantity)
+            .map((food) => (
+              <FeatureFoodsCard key={food._id} food={food}></FeatureFoodsCard>
+            ))}
         </div>
       </Fade>
 

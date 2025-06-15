@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "../Pages/Loading";
@@ -72,9 +72,12 @@ const Navbar = () => {
               {Links}
             </ul>
           </div>
-          <a className=" text-lg md:text-2xl lg:text-2xl font-semibold md:flex lg:flex hidden">
+          <Link
+            to="/"
+            className=" text-lg md:text-2xl lg:text-2xl font-semibold md:flex lg:flex hidden"
+          >
             Food <span className="text-emerald-400 pl-2"> Share </span>
-          </a>
+          </Link>
           <div></div>
         </div>
         {/* Nav bar center  */}

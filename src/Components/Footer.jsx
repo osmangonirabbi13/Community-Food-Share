@@ -1,5 +1,6 @@
 import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { Link } from "react-router";
+import logo from "../assets/Footer/Footer.png";
 
 const Footer = () => {
   return (
@@ -9,7 +10,9 @@ const Footer = () => {
           <div className="mx-auto container py-9">
             <div className="grid grid-cols-1 gap-8 px-14 lg:px-4 lg:py-8 lg:grid-cols-4">
               <div>
-                <div></div>
+                <div>
+                  <img className="w-30 lg:mx-auto" src={logo} alt="" />
+                </div>
 
                 <div className="flex mt-6 space-x-3 lg:justify-center">
                   <a
@@ -68,16 +71,24 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <Link className="hover:underline">Available Foods</Link>
+                    <Link to="/available-food" className="hover:underline">
+                      Available Foods
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <Link className="hover:underline">Add Food</Link>
+                    <Link to="/add-food" className="hover:underline">
+                      Add Food
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <Link className="hover:underline">Manage My Foods</Link>
+                    <Link to="/manage-foods" className="hover:underline">
+                      Manage My Foods
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <Link className="hover:underline">My Food Request</Link>
+                    <Link to="/food-request" className="hover:underline">
+                      My Food Request
+                    </Link>
                   </li>
                 </ul>
               </div>

@@ -11,12 +11,13 @@ import SingleFood from "../Pages/SingleFood";
 import FoodRequest from "../Pages/FoodRequest";
 import ManageFoods from "../Pages/ManageFoods";
 import FoodEdit from "../Pages/FoodEdit";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayouts,
-
+    ErrorBoundary: ErrorPage,
     children: [
       {
         path: "/",

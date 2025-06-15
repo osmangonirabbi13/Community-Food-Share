@@ -2,7 +2,7 @@ import React, { use } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import Loading from "../Pages/Loading";
-
+import { motion } from "motion/react";
 const FeatureFoodsCard = ({ food }) => {
   const { loading } = use(AuthContext);
   const {
@@ -25,8 +25,16 @@ const FeatureFoodsCard = ({ food }) => {
     <div className="shadow-md rounded-md p-3 border border-[#E5E7EB] group ">
       <div className="relative">
         <Link to={foodStatus === "Available" ? `/available-food/${_id}` : "/"}>
-          <img
-            className="transition-transform transform group-hover:scale-105 ease-in-out duration-500"
+          <motion.img
+            whileHover={{
+              scale: [null, 1.1, 1],
+              transition: {
+                duration: 0.5,
+                times: [0, 0.6, 1],
+                ease: ["easeInOut", "easeOut"],
+              },
+            }}
+            className=" group-hover:scale-105 ease-in-out duration-500"
             src={foodImageUrl}
             alt={foodName}
           />
@@ -57,24 +65,33 @@ const FeatureFoodsCard = ({ food }) => {
           <p className="text-base font-medium ">{donator_name}</p>
         </div>
         <div className="flex-1">
-          <p className="font-semibold ">Food Quantity</p>
-          <p className="text-base font-semibold "> {foodQuantity} </p>
+          <p className="font-semibold ">
+            <span className="font-bold text-lg">Food Quantity : </span>
+            <span className="text-wrap">{foodQuantity}</span>
+          </p>
         </div>
       </div>
       <div className="flex justify-around border-t-2 border-[#E5E7EB] py-3">
         <div className="flex-1">
-          <p className="font-semibold ">Pickup Location :</p>
-          <p className="font-medium "> {pickupLocation} </p>
+          <p className="font-semibold  ">
+            <span className="font-bold text-lg"> Pickup Location :</span>{" "}
+            <span className="text-wrap">{pickupLocation}</span>{" "}
+          </p>
         </div>
         <div className="flex-1">
-          <p className="font-semibold ">Expired Time :</p>
-          <p className="font-medium "> {expiredTime} hr </p>
+          <p className="font-semibold ">
+            <span className="font-bold text-lg">Expired Time :</span>{" "}
+            <span className="text-wrap">{expiredTime} hr </span>
+          </p>
         </div>
       </div>
       <div className="border-t-2 py-3 border-[#E5E7EB]">
-        <p className="font-semibold ">Donner Notes :</p>
-        <p className="font-medium "> {description} </p>
+        <p className="font-semibold ">
+          <span className="font-bold text-lg"> Donner Notes : </span>
+          <span className="text-wrap">{description}</span>{" "}
+        </p>
       </div>
+
       <div className="py-5">
         <Link
           className={`text-black py-2 px-3 text-sm font-medium rounded-md hover:bg-secondary ${

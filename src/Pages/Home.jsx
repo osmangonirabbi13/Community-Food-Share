@@ -4,6 +4,7 @@ import OurMission from "../Components/ourMission";
 import WeHelp from "../Components/WeHelp/WeHelp";
 import FeatureFoods from "./FeatureFoods";
 import GetTouch from "../Components/GetTouch";
+import Support from "../Components/Support";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Hero />
       <FeatureFoods />
       <OurMission />
+      <Support />
       <WeHelp />
       <GetTouch />
     </div>

@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "./style.css";
+import { Link } from "react-router";
 
 const Hero = () => {
   return (
@@ -25,7 +26,9 @@ const Hero = () => {
                   One Dish, Infinite Bonds
                 </h1>
 
-                <button className="btn btn-primary">View All Food</button>
+                <Link to="/available-food">
+                  <button className="btn btn-primary">View All Food</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -44,8 +47,9 @@ const Hero = () => {
                 <h1 className="mb-5 text-3xl md:text-4xl lg:text-5xl font-bold bg-[#0000004f] opacity-200 py-3 px-3">
                   Sharing Meals, Spreading Love
                 </h1>
-
-                <button className="btn btn-primary">View All Food</button>
+                <Link to="/available-food">
+                  <button className="btn btn-primary">View All Food</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -65,7 +69,9 @@ const Hero = () => {
                   Mealtime Magic, One Heartfelt Bite at a Time
                 </h1>
 
-                <button className="btn btn-primary">View All Food</button>
+                <Link to="/available-food">
+                  <button className="btn btn-primary">View All Food</button>
+                </Link>
               </div>
             </div>
           </div>
