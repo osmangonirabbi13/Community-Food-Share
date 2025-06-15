@@ -1,12 +1,29 @@
-# React + Vite
+# Food Sharing - Food Donation Website Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site URL: https://foodshare01.web.app/
 
-Currently, two official plugins are available:
+##  Npm Packages :
+    1 .React-icons
+    3 .Sweetalert2
+    4 .Swiper Js
+    5 .react-awesome-reveal
+    6 .tanstack/react-query
+    7 .lottie-react
+    8 .motion/react
+    9 .react-hot-toast
+    10 .axios
+    11 .preline js
+    
+    
+## Key Features: 
+🚀 Freelance Task Marketplace – A full-featured MERN stack application for posting, browsing, and bidding on freelance tasks with Firebase authentication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🧩 Complete Task Management – Add, update, delete, and view tasks. Users can manage their own tasks and place bids on others.
 
-## Expanding the ESLint configuration
+📱 Responsive Design – Fully responsive layout for mobile, tablet, and desktop devices.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔐 User Authentication – Sign up and log in securely using Firebase Authentication.
+
+🚀 Real-time Updates – Experience fast and dynamic interactions powered by Firebase.
+
+🌐 Deployed on Firebase – Hosted with Firebase for speed, scalability, and reliability.
