@@ -26,14 +26,20 @@ const Navbar = () => {
         <NavLink to="/available-food">Available Foods</NavLink>
       </li>
       <li>
-        <NavLink to="/add-food">Add Food</NavLink>
+        <NavLink to="/about">About Us</NavLink>
       </li>
       <li>
-        <NavLink to="/manage-foods">Manage My Foods</NavLink>
+        <NavLink to="/contact-us">Contact Us</NavLink>
       </li>
+
       <li>
-        <NavLink to="/food-request">My Food Request</NavLink>
+        <NavLink to="/terms-and-conditions">Terms And Conditions</NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink to="/dashboard/home">Dashboard</NavLink>
+        </li>
+      )}
     </>
   );
 

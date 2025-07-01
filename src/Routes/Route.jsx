@@ -12,6 +12,8 @@ import FoodRequest from "../Pages/FoodRequest";
 import ManageFoods from "../Pages/ManageFoods";
 import FoodEdit from "../Pages/FoodEdit";
 import ErrorPage from "../Pages/ErrorPage";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import DashboardHome from "../Pages/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -24,14 +26,7 @@ export const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
-      {
-        path: "/add-food",
-        element: (
-          <PrivateRoute>
-            <AddFood />
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "/available-food",
         Component: AvailableFoods,
@@ -44,22 +39,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "food-request",
-        element: (
-          <PrivateRoute>
-            <FoodRequest />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "manage-foods",
-        element: (
-          <PrivateRoute>
-            <ManageFoods />
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "update/:id",
         element: (
@@ -84,6 +64,34 @@ export const router = createBrowserRouter([
       {
         path: "/auth/login",
         Component: Login,
+      },
+    ],
+  },
+
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        path: "home",
+        Component: DashboardHome,
+      },
+      {
+        path: "add-food",
+        element: <AddFood />,
+      },
+      {
+        path: "food-request",
+        element: <FoodRequest />,
+      },
+      {
+        path: "manage-foods",
+        element: <ManageFoods />,
       },
     ],
   },
