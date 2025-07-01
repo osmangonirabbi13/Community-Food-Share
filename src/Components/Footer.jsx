@@ -44,24 +44,23 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
-                    <a href="#" className="hover:underline">
+                    <Link to="/about" className="hover:underline">
                       About us
-                    </a>
+                    </Link>
                   </li>
+
                   <li className="mb-4">
-                    <a href="#" className="hover:underline">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href="#" className="hover:underline">
+                    <Link
+                      to="/terms-and-conditions"
+                      className="hover:underline"
+                    >
                       Term and Conditions
-                    </a>
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <a href="#" className="hover:underline">
+                    <Link to="/contact-us" className="hover:underline">
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -76,17 +75,23 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="/add-food" className="hover:underline">
+                    <Link to="/dashboard/add-food" className="hover:underline">
                       Add Food
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="/manage-foods" className="hover:underline">
+                    <Link
+                      to="/dashboard/manage-foods"
+                      className="hover:underline"
+                    >
                       Manage My Foods
                     </Link>
                   </li>
                   <li className="mb-4">
-                    <Link to="/food-request" className="hover:underline">
+                    <Link
+                      to="/dashboard/food-request"
+                      className="hover:underline"
+                    >
                       My Food Request
                     </Link>
                   </li>
