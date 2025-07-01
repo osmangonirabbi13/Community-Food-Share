@@ -15,6 +15,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import DashboardHome from "../Pages/DashboardHome";
 import AboutUs from "../Pages/AboutUs";
+import TermsAndConditions from "../Pages/TermsAndConditions";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: "about",
         Component: AboutUs,
+      },
+      {
+        path: "terms-and-conditions",
+        Component: TermsAndConditions,
       },
     ],
   },
