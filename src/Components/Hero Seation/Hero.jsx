@@ -10,10 +10,10 @@ import { Link } from "react-router";
 const Hero = () => {
   return (
     <div className="">
-      <Swiper className="mySwiper h-[500px] bg-[#F1F6F2]  md:h-[350px] lg:h-[500px]   ">
+      <Swiper className="mySwiper h-[500px] bg-[#F1F6F2]  md:h-[350px] lg:h-screen  ">
         <SwiperSlide>
           <div
-            className="hero  h-[500px]"
+            className="hero  h-[700px]"
             style={{
               backgroundImage:
                 "url(https://i.ibb.co/1fR97V2z/pexels-senuscape-728360-2313682.jpg)",
@@ -35,7 +35,7 @@ const Hero = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className="hero  h-[500px]"
+            className="hero   h-[700px]"
             style={{
               backgroundImage:
                 "url(https://i.ibb.co/TqcC76MK/pexels-ella-olsson-572949-1640777.jpg)",
@@ -56,7 +56,7 @@ const Hero = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className="hero  h-[500px]"
+            className="hero   h-[700px]"
             style={{
               backgroundImage:
                 "url(https://i.ibb.co/Pv0FgjRN/pexels-jdgromov-4669300.jpg)",

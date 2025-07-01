@@ -1,11 +1,11 @@
-import React, { use } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 import toast, { Toaster } from "react-hot-toast";
 import Loading from "../Pages/Loading";
 
 const Navbar = () => {
-  const { user, signOutUser, loading } = use(AuthContext);
+  const { user, signOutUser, loading } = useContext(AuthContext);
 
   if (loading) {
     return <Loading />;
@@ -13,18 +13,12 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     signOutUser()
-      .then(() => {
-        if (!loading) {
-          return toast.success("Logout Successfull");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => toast.success("Logout Successful"))
+      .catch((error) => console.error(error));
   };
 
-  const Links = (
-    <ul className="dark:bg-gray-900 text-black dark:text-white">
+  const navLinks = (
+    <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
@@ -40,120 +34,91 @@ const Navbar = () => {
       <li>
         <NavLink to="/food-request">My Food Request</NavLink>
       </li>
-    </ul>
+    </>
   );
+
   return (
-    <nav>
-      <div className="navbar   p-0 bg-white px-2 md:px-12 lg:px-16 xl:px-50 lg:py-4 body items-center   border-b-1 border-blue-100">
-        {/* Nav bar start  */}
+    <nav className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow">
+      <div className="navbar max-w-7xl mx-auto px-4 py-2">
+        {/* Navbar Start */}
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
-            </div>
+            </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3  w-52 p-2 shadow dark:bg-gray-900 text-black dark:text-white"
+              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 dark:bg-gray-900"
             >
-              {Links}
+              {navLinks}
             </ul>
           </div>
           <Link
             to="/"
-            className=" text-lg md:text-2xl lg:text-2xl font-semibold md:flex lg:flex hidden"
+            className="text-xl font-bold text-emerald-500 hidden lg:block"
           >
-            Food <span className="text-emerald-400 pl-2"> Share </span>
+            Food <span className="text-primary">Share</span>
           </Link>
-          <div></div>
         </div>
-        {/* Nav bar center  */}
+
+        {/* Navbar Center */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-5 text-xl font-medium">
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/available-food">Available Foods</NavLink>
-            </li>
-            <li>
-              <NavLink to="/add-food">Add Food</NavLink>
-            </li>
-            <li>
-              <NavLink to="/manage-foods">Manage My Foods</NavLink>
-            </li>
-            <li>
-              <NavLink to="/food-request">My Food Request</NavLink>
-            </li>
+          <ul className="menu menu-horizontal px-1 text-lg font-medium gap-4 dark:text-white">
+            {navLinks}
           </ul>
         </div>
+
+        {/* Navbar End */}
         <div className="navbar-end">
           {user ? (
-            <div className="flex gap-2 ">
-              {/* nav  bar end  */}
-
-              <div className="dropdown dropdown-end">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className="btn btn-ghost btn-circle w-14 h-14 avatar"
-                >
-                  <div className="w-10  rounded-full">
-                    <img
-                      className=" "
-                      alt="user profile"
-                      src={`${user && user.photoURL}`}
-                    />
-                  </div>
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img
+                    src={user.photoURL || "/default-avatar.png"}
+                    alt="user"
+                  />
                 </div>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-2  w-80 p-2 shadow "
-                >
-                  <li>
-                    <div className="flex flex-col pb-4 items-start border-b-2 border-gray-200">
-                      <p className=" text-sm pb-2 ">
-                        {user && user.displayName}
-                      </p>
-                      <p className="text-xl">{user && user.email}</p>
-                    </div>
-                  </li>
-                  <li></li>
-                  <li>
-                    <button
-                      className="btn btn-secondary text-center font-semibold"
-                      onClick={handleLogOut}
-                    >
-                      Logout
-                    </button>
-                  </li>
-                </ul>
-              </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 p-4 shadow bg-base-100 rounded-box w-72"
+              >
+                <li className="pb-2 border-b">
+                  <p className="text-sm">{user.displayName}</p>
+                  <p className="text-xs text-gray-500">{user.email}</p>
+                </li>
+                <li className="pt-2">
+                  <button
+                    onClick={handleLogOut}
+                    className="btn btn-secondary w-full"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
             </div>
           ) : (
             <>
-              <NavLink
-                to="/auth/login"
-                className="btn btn-secondary px-6 md:px-10"
-              >
+              <NavLink to="/auth/login" className="btn btn-secondary px-5">
                 Login
               </NavLink>
               <NavLink
                 to="/auth/register"
-                className="btn btn-secondary ml-5 mr-4 px-6 md:px-10"
+                className="btn btn-secondary ml-3 px-5"
               >
                 Register
               </NavLink>
