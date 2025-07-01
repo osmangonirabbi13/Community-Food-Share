@@ -16,6 +16,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import DashboardHome from "../Pages/DashboardHome";
 import AboutUs from "../Pages/AboutUs";
 import TermsAndConditions from "../Pages/TermsAndConditions";
+import ContactUs from "../Pages/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "terms-and-conditions",
         Component: TermsAndConditions,
+      },
+      {
+        path: "contact-us",
+        Component: ContactUs,
       },
     ],
   },
