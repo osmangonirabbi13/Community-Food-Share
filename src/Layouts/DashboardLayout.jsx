@@ -6,7 +6,7 @@ import { MdTask } from "react-icons/md";
 import { AuthContext } from "../Provider/AuthContext";
 
 const DashboardLayout = () => {
-  const { logOut } = use(AuthContext);
+  const { signOutUser } = use(AuthContext);
 
   return (
     <div className="drawer lg:drawer-open">
@@ -82,7 +82,7 @@ const DashboardLayout = () => {
 
           <div>
             <button
-              onClick={logOut}
+              onClick={signOutUser}
               className="flex w-full cursor-pointer items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300 hover:text-gray-700 transition-colors duration-300 transform"
             >
               <GrLogout className="w-5 h-5" />

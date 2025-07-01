@@ -14,6 +14,7 @@ import FoodEdit from "../Pages/FoodEdit";
 import ErrorPage from "../Pages/ErrorPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import DashboardHome from "../Pages/DashboardHome";
+import AboutUs from "../Pages/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
             <FoodEdit />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "about",
+        Component: AboutUs,
       },
     ],
   },
