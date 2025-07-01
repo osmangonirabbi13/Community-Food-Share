@@ -5,6 +5,7 @@ import WeHelp from "../Components/WeHelp/WeHelp";
 import FeatureFoods from "./FeatureFoods";
 import GetTouch from "../Components/GetTouch";
 import Support from "../Components/Support";
+import Volunteers from "../Components/Volunteers";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <OurMission />
       <Support />
       <WeHelp />
+      <Volunteers />
       <GetTouch />
     </div>
   );
