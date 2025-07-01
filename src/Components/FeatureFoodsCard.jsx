@@ -22,7 +22,7 @@ const FeatureFoodsCard = ({ food }) => {
     return <Loading />;
   }
   return (
-    <div className="shadow-md rounded-md p-3 border border-[#E5E7EB] group ">
+    <div className="shadow-md rounded-md p-3 dark:bg-gray-700 group ">
       <div className="relative">
         <Link to={foodStatus === "Available" ? `/available-food/${_id}` : "/"}>
           <motion.img

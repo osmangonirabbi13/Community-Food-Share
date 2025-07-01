@@ -72,11 +72,8 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <Link
-            to="/"
-            className="text-xl font-bold text-emerald-500 hidden lg:block"
-          >
-            Food <span className="text-primary">Share</span>
+          <Link to="/" className="text-2xl  font-bold  hidden lg:block">
+            Food <span className="text-emerald-500">Share</span>
           </Link>
         </div>
 
