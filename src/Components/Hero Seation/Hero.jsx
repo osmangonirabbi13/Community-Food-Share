@@ -27,7 +27,9 @@ const Hero = () => {
                 </h1>
 
                 <Link to="/available-food">
-                  <button className="btn btn-primary">View All Food</button>
+                  <button className="btn bg-[#FA2371] text-black border-none">
+                    View All Food
+                  </button>
                 </Link>
               </div>
             </div>
@@ -48,7 +50,9 @@ const Hero = () => {
                   Sharing Meals, Spreading Love
                 </h1>
                 <Link to="/available-food">
-                  <button className="btn btn-primary">View All Food</button>
+                  <button className="btn bg-[#FA2371] text-black border-none">
+                    View All Food
+                  </button>
                 </Link>
               </div>
             </div>
@@ -70,7 +74,9 @@ const Hero = () => {
                 </h1>
 
                 <Link to="/available-food">
-                  <button className="btn btn-primary">View All Food</button>
+                  <button className="btn bg-[#FA2371] text-black border-none">
+                    View All Food
+                  </button>
                 </Link>
               </div>
             </div>

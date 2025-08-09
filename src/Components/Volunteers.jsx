@@ -35,7 +35,7 @@ const volunteers = [
 
 const Volunteers = () => {
   return (
-    <section className="py-2 px-4 md:px-10 bg-white dark:bg-gray-900">
+    <section className="py-2 px-4 md:px-10 bg-white dark:bg-gray-900 pb-10">
       <div className="text-center mb-12">
         <p className="text-green-600 font-semibold text-xl">Food Sharing</p>
         <h2 className="text-3xl md:text-5xl font-bold">
@@ -54,7 +54,6 @@ const Volunteers = () => {
             key={idx}
             className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col h-full"
           >
-            {/* ✅ Volunteer Image */}
             <img
               src={vol.img}
               alt={vol.name}
@@ -70,10 +69,6 @@ const Volunteers = () => {
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 flex-grow">
                 {vol.desc}
               </p>
-
-              <button className="mt-auto w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                READ MORE
-              </button>
             </div>
           </div>
         ))}
