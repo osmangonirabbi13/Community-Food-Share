@@ -90,6 +90,12 @@ const DashboardHome = () => {
           value={myDonatedFoods}
           color="#FF9800"
         />
+        <StatCard
+          icon={FaClipboardList}
+          title="My Requested Foods"
+          value={myRequestedFoods}
+          color="#F44336"
+        />
       </div>
     </div>
   );
