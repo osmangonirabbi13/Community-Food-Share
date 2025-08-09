@@ -13,7 +13,7 @@ const AvailableFoods = () => {
   const [filteredText, setFilteredText] = useState("");
   const [isThreeColumn, setIsThreeColumn] = useState(true);
   const [asc, setAsc] = useState(true);
-  const [showMobileFilters, setShowMobileFilters] = useState(false); // ✅ mobile filter toggle
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
